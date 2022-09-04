@@ -1,6 +1,6 @@
-package com.kbsc.pillpick.domain.member.domain;
+package com.kbsc.pillpick.domain;
 
-import com.kbsc.pillpick.domain.medicine.domain.Medicine;
+import com.kbsc.pillpick.domain.Medicine;
 import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;

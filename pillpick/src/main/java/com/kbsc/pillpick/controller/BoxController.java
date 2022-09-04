@@ -1,4 +1,4 @@
-package com.kbsc.pillpick.domain.box.controller;
+package com.kbsc.pillpick.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

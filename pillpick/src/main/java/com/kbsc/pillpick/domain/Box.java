@@ -1,4 +1,4 @@
-package com.kbsc.pillpick.domain.box.domain;
+package com.kbsc.pillpick.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

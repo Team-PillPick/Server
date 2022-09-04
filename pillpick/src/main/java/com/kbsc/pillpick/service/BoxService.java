@@ -1,4 +1,4 @@
-package com.kbsc.pillpick.domain.box.service;
+package com.kbsc.pillpick.service;
 
 import org.springframework.stereotype.Service;
 

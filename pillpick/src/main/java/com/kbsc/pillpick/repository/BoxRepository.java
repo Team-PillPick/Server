@@ -1,4 +1,4 @@
-package com.kbsc.pillpick.domain.box.repository;
+package com.kbsc.pillpick.repository;
 
 import com.kbsc.pillpick.domain.box.domain.Box;
 import org.springframework.data.jpa.repository.JpaRepository;

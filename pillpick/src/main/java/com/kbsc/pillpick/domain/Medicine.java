@@ -1,6 +1,6 @@
-package com.kbsc.pillpick.domain.medicine.domain;
+package com.kbsc.pillpick.domain;
 
-import com.kbsc.pillpick.domain.member.domain.Member;
+import com.kbsc.pillpick.domain.Member;
 
 import javax.persistence.*;
 
