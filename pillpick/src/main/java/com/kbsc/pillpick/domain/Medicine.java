@@ -5,7 +5,7 @@ import com.kbsc.pillpick.domain.Member;
 import javax.persistence.*;
 
 @Entity
-public class Medicine {
+public class Medicine extends Timestamped {
 
     @Id
     @GeneratedValue
