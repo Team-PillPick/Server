@@ -1,4 +1,4 @@
-package com.kbsc.pillpick.dto;
+package com.kbsc.pillpick.dto.medicineDto;
 
 
 import lombok.Getter;

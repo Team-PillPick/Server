@@ -1,7 +1,6 @@
 package com.kbsc.pillpick.domain;
 
-import com.kbsc.pillpick.domain.Member;
-import com.kbsc.pillpick.dto.MedicineCreateRequestDto;
+import com.kbsc.pillpick.dto.medicineDto.MedicineCreateRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
