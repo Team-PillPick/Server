@@ -3,6 +3,7 @@ package com.kbsc.pillpick.service;
 import com.kbsc.pillpick.common.response.BasicResponse;
 import com.kbsc.pillpick.domain.Medicine;
 import com.kbsc.pillpick.domain.Member;
+import com.kbsc.pillpick.dto.medicineDto.DeleteMedicineRequestDto;
 import com.kbsc.pillpick.dto.medicineDto.GetMedicineResponseDto;
 import com.kbsc.pillpick.dto.medicineDto.CreateMedicineRequestDto;
 import com.kbsc.pillpick.dto.medicineDto.UpdateMedicineRequestDto;
@@ -120,6 +121,32 @@ public class MedicineService {
                     .success(false)
                     .build();
         }
+
+        return new ResponseEntity<>(basicResponse, httpStatus);
+    }
+
+    public ResponseEntity<BasicResponse> deleteMyPill(List<Long> pillIdList) {
+
+        BasicResponse basicResponse = new BasicResponse();
+        HttpStatus httpStatus = null;
+
+
+        for (Long pillId : pillIdList) {
+            Optional<Medicine> targetMedicine = medicineRepository.findById(pillId);
+            if(targetMedicine.isEmpty()){
+                throw new IllegalArgumentException("존재하지 않는 약품 입니다 : " + pillId);
+            }
+            medicineRepository.deleteById(pillId);
+        }
+
+        httpStatus = HttpStatus.OK;
+
+        basicResponse = BasicResponse.builder()
+                .status(HttpStatus.OK.value())
+                .message("약품 삭제 성공")
+                .data(Collections.emptyList())
+                .success(true)
+                .build();
 
         return new ResponseEntity<>(basicResponse, httpStatus);
     }
