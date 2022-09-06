@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.kbsc.pillpick.config.jwtConfig.JwtTokenProvider;
 import com.kbsc.pillpick.domain.Member;
-import com.kbsc.pillpick.domain.memberDto.MemberJoinRequestDto;
+import com.kbsc.pillpick.dto.memberDto.MemberJoinRequestDto;
 import com.kbsc.pillpick.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
