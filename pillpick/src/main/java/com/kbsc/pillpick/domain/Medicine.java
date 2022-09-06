@@ -1,10 +1,16 @@
 package com.kbsc.pillpick.domain;
 
-import com.kbsc.pillpick.domain.Member;
+import com.kbsc.pillpick.dto.medicineDto.CreateMedicineRequestDto;
+import com.kbsc.pillpick.dto.medicineDto.UpdateMedicineRequestDto;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.hibernate.sql.Update;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
+@Getter
 public class Medicine extends Timestamped {
 
     @Id
@@ -28,4 +34,15 @@ public class Medicine extends Timestamped {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    public Medicine(Member member, CreateMedicineRequestDto requestDto) {
+        this.name = requestDto.getName();
+        this.form = requestDto.getForm();
+        this.expirationDate = requestDto.getExpirationDate();
+        this.member = member;
+    }
+    public void updateMedicine(UpdateMedicineRequestDto requestDto) {
+        this.name = requestDto.getName();
+        this.form = requestDto.getForm();
+        this.expirationDate = requestDto.getExpirationDate();
+    }
 }

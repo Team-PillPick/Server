@@ -1,6 +1,6 @@
 package com.kbsc.pillpick.controller;
 
-import com.kbsc.pillpick.domain.memberDto.MemberJoinRequestDto;
+import com.kbsc.pillpick.dto.memberDto.MemberJoinRequestDto;
 import com.kbsc.pillpick.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

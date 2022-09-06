@@ -1,7 +1,6 @@
 package com.kbsc.pillpick.domain;
 
-import com.kbsc.pillpick.domain.Medicine;
-import com.kbsc.pillpick.domain.memberDto.MemberJoinRequestDto;
+import com.kbsc.pillpick.dto.memberDto.MemberJoinRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import java.util.ArrayList;
