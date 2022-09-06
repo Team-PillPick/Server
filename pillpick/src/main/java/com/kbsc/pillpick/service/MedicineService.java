@@ -4,17 +4,16 @@ import com.kbsc.pillpick.common.response.BasicResponse;
 import com.kbsc.pillpick.domain.Medicine;
 import com.kbsc.pillpick.domain.Member;
 import com.kbsc.pillpick.dto.medicineDto.GetMedicineResponseDto;
-import com.kbsc.pillpick.dto.medicineDto.MedicineCreateRequestDto;
+import com.kbsc.pillpick.dto.medicineDto.CreateMedicineRequestDto;
+import com.kbsc.pillpick.dto.medicineDto.UpdateMedicineRequestDto;
 import com.kbsc.pillpick.repository.MedicineRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +21,7 @@ public class MedicineService {
 
     private final MedicineRepository medicineRepository;
 
-    public ResponseEntity<BasicResponse> createMyPill(Member member, MedicineCreateRequestDto requestDto) {
+    public ResponseEntity<BasicResponse> createMyPill(Member member, CreateMedicineRequestDto requestDto) {
         BasicResponse basicResponse = new BasicResponse();
         HttpStatus httpStatus = null;
 
@@ -75,7 +74,7 @@ public class MedicineService {
 
             basicResponse = BasicResponse.builder()
                     .status(HttpStatus.OK.value())
-                    .message("마이필 뷰 전체 조회 성공")
+                    .message("나의 약품 전제 조회 성공")
                     .data(Arrays.asList(dataList))
                     .success(true)
                     .build();
@@ -91,5 +90,37 @@ public class MedicineService {
 
         return new ResponseEntity<>(basicResponse, httpStatus);
 
+    }
+
+
+    @Transactional
+    public ResponseEntity<BasicResponse> updateMyPill(Long pillId, UpdateMedicineRequestDto requestDto) {
+
+        BasicResponse basicResponse = new BasicResponse();
+        HttpStatus httpStatus = null;
+
+        Optional<Medicine> targetMedicine = medicineRepository.findById(pillId);
+
+        if(targetMedicine.isPresent()){
+            httpStatus = HttpStatus.CREATED;
+            targetMedicine.get().updateMedicine(requestDto);
+
+            basicResponse = BasicResponse.builder()
+                    .status(HttpStatus.CREATED.value())
+                    .message("약품 편집 성공")
+                    .data(Collections.emptyList())
+                    .success(true)
+                    .build();
+        }else{
+            httpStatus = HttpStatus.BAD_REQUEST;
+            basicResponse = BasicResponse.builder()
+                    .status(HttpStatus.BAD_REQUEST.value())
+                    .message("관련 약품이 없습니다.")
+                    .data(Collections.emptyList())
+                    .success(false)
+                    .build();
+        }
+
+        return new ResponseEntity<>(basicResponse, httpStatus);
     }
 }
