@@ -1,10 +1,15 @@
 package com.kbsc.pillpick.domain;
 
 import com.kbsc.pillpick.domain.Member;
+import com.kbsc.pillpick.dto.MedicineCreateRequestDto;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
+@Getter
 public class Medicine extends Timestamped {
 
     @Id
@@ -28,4 +33,10 @@ public class Medicine extends Timestamped {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    public Medicine(Member member, MedicineCreateRequestDto requestDto) {
+        this.name = requestDto.getName();
+        this.form = requestDto.getForm();
+        this.expirationDate = requestDto.getExpirationDate();
+        this.member = member;
+    }
 }

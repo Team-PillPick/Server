@@ -2,13 +2,11 @@ package com.kbsc.pillpick.service;
 
 import com.kbsc.pillpick.config.jwtConfig.JwtTokenProvider;
 import com.kbsc.pillpick.domain.Member;
-import com.kbsc.pillpick.domain.memberDto.MemberJoinRequestDto;
+import com.kbsc.pillpick.dto.memberDto.MemberJoinRequestDto;
 import com.kbsc.pillpick.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package com.kbsc.pillpick.domain.memberDto;
+package com.kbsc.pillpick.dto.memberDto;
 
 import lombok.Getter;
 
