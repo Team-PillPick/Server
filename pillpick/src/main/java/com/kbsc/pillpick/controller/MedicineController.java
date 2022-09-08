@@ -43,6 +43,12 @@ public class MedicineController {
         System.out.println(pillIdList);
         return medicineService.deleteMyPill(pillIdList);
     }
+
+    @PostMapping("/return")
+    public ResponseEntity<BasicResponse> returnMyPill(@AuthenticationPrincipal Member member, @RequestParam List<Long> pillIdList){
+        System.out.println(pillIdList);
+        return medicineService.returnMyPill(member, pillIdList);
+    }
 }
 
 
