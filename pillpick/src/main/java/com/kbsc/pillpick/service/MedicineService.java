@@ -22,6 +22,8 @@ public class MedicineService {
 
     private final MedicineRepository medicineRepository;
 
+    private final PhotoRepository photoRepository;
+
     public ResponseEntity<BasicResponse> createMyPill(Member member, CreateMedicineRequestDto requestDto) {
         BasicResponse basicResponse = new BasicResponse();
         HttpStatus httpStatus = null;
@@ -39,6 +41,15 @@ public class MedicineService {
 
             Medicine createdMedicine = new Medicine(member, requestDto);
             Long medicineId = medicineRepository.save(createdMedicine).getId();
+
+            if(reviewDTO.getAttachedPhotoIds() != null){
+                // 리뷰 사진 DB 저장
+                for (String attached : reviewDTO.getAttachedPhotoIds()) {
+                    Photo photo = new Photo(attached, review);
+                    photoRepository.save(photo);
+                }
+            }
+
         }else{
             httpStatus = HttpStatus.NOT_FOUND;
 
