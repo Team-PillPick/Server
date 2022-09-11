@@ -42,9 +42,9 @@ public class MedicineService {
             Medicine createdMedicine = new Medicine(member, requestDto);
             Long medicineId = medicineRepository.save(createdMedicine).getId();
 
-            if(reviewDTO.getAttachedPhotoIds() != null){
+            if(requestDTO.getAttachedPhotoIds() != null){
                 // 리뷰 사진 DB 저장
-                for (String attached : reviewDTO.getAttachedPhotoIds()) {
+                for (String attached : requestDTO.getAttachedPhotoIds()) {
                     Photo photo = new Photo(attached, review);
                     photoRepository.save(photo);
                 }
