@@ -1,16 +1,16 @@
-#spring:
-#  config:
-#    activate:
-#      on-profile: prod
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://spring-db.cetou4g9ygt3.ap-northeast-2.rds.amazonaws.com:3306/demo
-#    username: admin
-#    password: 12345678
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    show-sql: false
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.MySQL8Dialect
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://pillpick-db.cetou4g9ygt3.ap-northeast-2.rds.amazonaws.com:3306/pillpick
+    username: admin
+    password: mypillpick
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
