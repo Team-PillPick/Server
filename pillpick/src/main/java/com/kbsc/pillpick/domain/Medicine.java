@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.sql.Update;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 
 @Entity
@@ -31,23 +29,7 @@ public class Medicine extends Timestamped {
     // 대표 이미지 주소
     private String photo;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long photoId;
-
-    @NotNull
-    private String attachedPhoto;
-
-    // [Member] 1: N 양방향 관계 (연관관계 주인)
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
-
-    // 임시 데이터 저장을 위한 생성자
-    public Photo(String attached, Member member) {
-        this.attachedPhoto = attached;
-        this.member = member;
-    }
+   
 
     public Medicine(Member member, CreateMedicineRequestDto requestDto) {
         this.name = requestDto.getName();
