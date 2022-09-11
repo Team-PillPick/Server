@@ -3,6 +3,7 @@ package com.kbsc.pillpick.domain;
 import com.kbsc.pillpick.dto.medicineDto.CreateMedicineRequestDto;
 import com.kbsc.pillpick.dto.medicineDto.UpdateMedicineRequestDto;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
 import org.hibernate.sql.Update;
 
@@ -11,6 +12,10 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Getter
+@Setter;
+@ToString
+@DynamicUpdate
+@DynamicInsert
 public class Medicine extends Timestamped {
 
     @Id

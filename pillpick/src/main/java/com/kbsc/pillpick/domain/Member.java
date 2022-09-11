@@ -59,6 +59,12 @@ public class Member extends Timestamped implements UserDetails {
         this.roles = (Collections.singletonList("ROLE_USER"));
     }
 
+    public int addCount(int size){
+        this.count += size;
+        return this.count;
+
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles.stream()
