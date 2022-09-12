@@ -165,6 +165,7 @@ public class MedicineService {
 
 
         int count = foundMember.get().addCount(pillIdList.size());
+        foundMember.get().updateLevel(count / 15);
 
 
         for (Long pillId : pillIdList) {
@@ -183,6 +184,7 @@ public class MedicineService {
                 .data(Collections.singletonList(count))
                 .success(true)
                 .build();
+
 
         return new ResponseEntity<>(basicResponse, httpStatus);
     }

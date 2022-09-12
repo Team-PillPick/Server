@@ -62,7 +62,10 @@ public class Member extends Timestamped implements UserDetails {
     public int addCount(int size){
         this.count += size;
         return this.count;
+    }
 
+    public void updateLevel(int level){
+        this.level = level;
     }
 
     @Override
