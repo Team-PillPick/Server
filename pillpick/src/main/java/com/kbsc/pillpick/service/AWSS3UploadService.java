@@ -20,7 +20,7 @@ public class AWSS3UploadService implements UploadService{
     private final AmazonS3 amazonS3;
     private final S3Component component;
 
-    private FileUrl fileUrl;
+    private String fileUrl;
 
     @Override
     public void uploadFile(InputStream inputStream, ObjectMetadata objectMetadata, String fileName){
@@ -34,9 +34,9 @@ public class AWSS3UploadService implements UploadService{
 
     private final MedicineRepository medicineRepository;
 
-    public Medicine save(final Long id) {
-        Medicine medicine = medicineRepository.findById(id);
-        medicine.changePhoto(fileUrl);
-        return medicine;
-    }
+//    public Medicine save(final Long id) {
+//        Medicine medicine = medicineRepository.findById(id);
+//        medicine.changePhoto(fileUrl);
+//        return medicine;
+//    }
 }
