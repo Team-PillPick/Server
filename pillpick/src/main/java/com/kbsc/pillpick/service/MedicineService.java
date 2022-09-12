@@ -25,6 +25,7 @@ public class MedicineService {
     private final MedicineRepository medicineRepository;
     private final MemberRepository memberRepository;
 
+
     public ResponseEntity<BasicResponse> createMyPill(Member member, CreateMedicineRequestDto requestDto) {
         BasicResponse basicResponse = new BasicResponse();
         HttpStatus httpStatus = null;

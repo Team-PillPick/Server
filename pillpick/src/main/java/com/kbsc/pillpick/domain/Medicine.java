@@ -3,7 +3,11 @@ package com.kbsc.pillpick.domain;
 import com.kbsc.pillpick.dto.medicineDto.CreateMedicineRequestDto;
 import com.kbsc.pillpick.dto.medicineDto.UpdateMedicineRequestDto;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.sql.Update;
 
 import javax.persistence.*;
@@ -11,6 +15,10 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Getter
+@Setter
+@ToString
+@DynamicUpdate
+@DynamicInsert
 public class Medicine extends Timestamped {
 
     @Id
@@ -44,5 +52,8 @@ public class Medicine extends Timestamped {
         this.name = requestDto.getName();
         this.form = requestDto.getForm();
         this.expirationDate = requestDto.getExpirationDate();
+    }
+    public void updatePhoto(String url){
+        this.photo = url;
     }
 }
