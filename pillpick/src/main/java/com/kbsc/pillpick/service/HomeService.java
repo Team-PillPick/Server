@@ -25,7 +25,7 @@ public class HomeService {
         if(member != null){
             httpStatus = HttpStatus.OK;
             Optional<Member> foundMember = memberRepository.findByEmail(member.getEmail());
-            List<GetMemberResponseDto> dataList = new ArrayList<>();
+            List<Object> dataList = new ArrayList<>();
 
             dataList.add(GetMemberResponseDto.builder()
                     .name(foundMember.get().getName())
@@ -36,7 +36,7 @@ public class HomeService {
             basicResponse = BasicResponse.builder()
                     .status(HttpStatus.OK.value())
                     .message("홈화면 조회 성공")
-                    .data(Arrays.asList(dataList))
+                    .data(dataList)
                     .success(true)
                     .build();
         }else{

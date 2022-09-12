@@ -1,6 +1,8 @@
 package com.kbsc.pillpick.controller;
 
+import com.kbsc.pillpick.common.response.BasicResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -15,7 +17,7 @@ public class ImageUploadController {
     private final ImageUploadService imageUploadService;
 
     @PostMapping("/mypill/upload/{pillId}")
-    public String uploadImage(@RequestPart MultipartFile file, @PathVariable Long pillId){
+    public ResponseEntity<BasicResponse> uploadImage(@RequestPart MultipartFile file, @PathVariable Long pillId){
         return imageUploadService.uploadImage(file, pillId);
     }
 }

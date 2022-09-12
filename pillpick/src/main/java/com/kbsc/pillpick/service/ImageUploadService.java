@@ -1,9 +1,12 @@
 package com.kbsc.pillpick.service;
 
 import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.kbsc.pillpick.common.response.BasicResponse;
 import com.kbsc.pillpick.domain.Medicine;
 import com.kbsc.pillpick.repository.MedicineRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +15,8 @@ import com.kbsc.pillpick.service.UploadService;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,7 +28,10 @@ public class ImageUploadService {
     private final MedicineRepository medicineRepository;
 
     @Transactional
-    public String uploadImage(MultipartFile file, Long pillId) {
+    public ResponseEntity<BasicResponse> uploadImage(MultipartFile file, Long pillId) {
+        BasicResponse basicResponse = new BasicResponse();
+        HttpStatus httpStatus = null;
+
         String fileName = CreateFileName(file.getOriginalFilename());
         ObjectMetadata objectMetadata = new ObjectMetadata();
         objectMetadata.setContentLength(file.getSize());
@@ -36,7 +44,20 @@ public class ImageUploadService {
         String imgUrl = s3Service.getFileUrl(fileName);
         Optional<Medicine> targetMedicine = medicineRepository.findById(pillId);
         targetMedicine.get().updatePhoto(imgUrl);
-        return imgUrl;
+
+        httpStatus = HttpStatus.OK;
+
+        List<Object> dataList = new ArrayList<>();
+        dataList.add(imgUrl);
+
+        basicResponse = BasicResponse.builder()
+                .status(HttpStatus.OK.value())
+                .message("이미지 업로드 성공")
+                .data(dataList)
+                .success(true)
+                .build();
+
+        return new ResponseEntity<>(basicResponse, httpStatus);
     }
 
     private String CreateFileName(String originalFileName) {

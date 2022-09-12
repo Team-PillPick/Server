@@ -65,7 +65,7 @@ public class MedicineService {
         if(member != null){
             httpStatus = HttpStatus.OK;
             List<Medicine> myMedicineList = medicineRepository.findByMember(member);
-            List<GetMedicineResponseDto> dataList = new ArrayList<>();
+            List<Object> dataList = new ArrayList<>();
 
             for (Medicine myMedicine : myMedicineList) {
                 dataList.add(GetMedicineResponseDto.builder()
@@ -80,7 +80,7 @@ public class MedicineService {
             basicResponse = BasicResponse.builder()
                     .status(HttpStatus.OK.value())
                     .message("나의 약품 전제 조회 성공")
-                    .data(Arrays.asList(dataList))
+                    .data(dataList)
                     .success(true)
                     .build();
         }else{

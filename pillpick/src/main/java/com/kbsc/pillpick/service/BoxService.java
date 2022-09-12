@@ -125,7 +125,7 @@ public class BoxService {
 
         List<Box> boxList = boxRepository.findAll();
 
-        List<BoxResponseDto> dataList = new ArrayList<>();
+        List<Object> dataList = new ArrayList<>();
 
         for (Box box : boxList) {
             dataList.add(BoxResponseDto.builder()
@@ -140,7 +140,7 @@ public class BoxService {
         basicResponse = BasicResponse.builder()
                 .status(HttpStatus.OK.value())
                 .message("모든 수거함 조회 성공")
-                .data(Arrays.asList(dataList))
+                .data(dataList)
                 .success(true)
                 .build();
 
